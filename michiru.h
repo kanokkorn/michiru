@@ -25,7 +25,7 @@ void time_sleep(unsigned int);
 
 /* image processing */
 
-void get_image_data(const char*);
+void image_info(const char*);
 void image_gray(const char*);
 void image_blur(const char*);
 
