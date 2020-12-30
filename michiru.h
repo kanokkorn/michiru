@@ -4,9 +4,17 @@
 /* standard libraries */
 
 #include <stdio.h>
-#include <unistd.h>
 #include <time.h>
 #include <math.h>
+
+#ifdef linux 
+#include <unistd.h>
+#endif
+
+#ifdef _WIN32
+#include <stdint.h>
+#endif
+
 
 /* stb_image */
 
