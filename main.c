@@ -6,7 +6,7 @@ enum {info, gray, blur, edge, avrg, size, fcol};
 int main (int argc, char *argv[]) {
   if (argc == 1 && argv[func] == NULL) {
     printf("\n<<-- Michiru - Images processing with C language -->>\n");
-    printf("\nUsage: ./michiru [filename] [function]\n"
+    printf("\nUsage: ./michiru [function] [filename]\n"
            "\nFunction: info - display image width, height and color channel\n"
            "          gray - convert image to grayscale and save to image_gray\n"
            "          blur - blur image with Gaussian filter wtih 3x3 kernel size\n"
