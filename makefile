@@ -1,4 +1,4 @@
-cc = tcc
+cc = cc
 cflags = -std=c99 -Wall -Wextra -Ofast -pthread
 libs = -lm
 
