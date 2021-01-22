@@ -71,7 +71,8 @@ void image_blur (const char* image_file) {
   stbi_image_free(blur_img);
 }
 
-/* convert to grayscale */
+
+/* support PNG only */
 void image_gray (const char* image_file) {
   const char *fname = "image_gray.jpg";
   int x, y, comps, gray_chan;

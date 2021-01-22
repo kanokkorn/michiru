@@ -1,5 +1,5 @@
-cc = cc
-cflags = --std=c99 -Wall -Wextra -Ofast -pthread
+cc = tcc
+cflags = -std=c99 -Wall -Wextra -Ofast -pthread
 libs = -lm
 
 michiru: main.c michiru.h
