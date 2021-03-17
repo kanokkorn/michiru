@@ -1,4 +1,4 @@
-#include "michiru.h"
+#include "main.h"
 
 enum {prog, func, imgp};
 enum {info, gray, blur, edge, avrg, size, fcol};

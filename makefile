@@ -1,8 +1,11 @@
-cc = cc
-cflags = -std=c99 -Wall -Wextra -Ofast -pthread
-libs = -lm
+CC = cc
+CFLAGS = -std=c99 -Wall -Wextra -Os -s -pedantic
+LIBS = -lm
+PROJECT = michiru
 
-michiru: main.c michiru.h
-	$(cc) main.c $(cflags) $(libs) -o michiru
+$(PROJECT): main.c
+	$(CC) $(CFLAGS) $(LIBS) $< -o $@
 clean:
-	rm michiru
+	rm $(PROJECT)
+
+.SILENT: clean
