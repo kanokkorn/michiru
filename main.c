@@ -3,8 +3,23 @@
 enum {prog, func, imgp};
 enum {info, gray, blur, edge, avrg, size, fcol};
 
+
 int main (int argc, char *argv[]) {
-  if (argc == 1 && argv[func] == NULL) {
+  image *img = malloc(sizeof(image));
+  if ((argc == 3) && argv[func] != NULL && argv[imgp] != NULL) {
+     if (strcmp("gray", argv[func]) == 0) {
+        printf("\nconverting image to grayscale\n"); 
+        image_gray(argv[imgp]);
+        printf("done...\n");
+      } else if (strcmp("blur", argv[func]) == 0) {
+        printf("\napplying gaussian filter to image\n");
+        printf("done...\n");
+      } else if (strcmp("info", argv[func]) == 0) {
+        printf("\ndisplaying image info\n");
+        image_info(argv[imgp]);
+      }
+    exit(EXIT_SUCCESS);
+    } else {
     printf("\n<<-- Michiru - Images processing with C language -->>\n");
     printf("\nUsage: ./michiru [function] [filename]\n"
            "\nFunction: info - display image width, height and color channel\n"
@@ -15,29 +30,7 @@ int main (int argc, char *argv[]) {
            "          size - resize an image\n"
            "          fcol - find color in an image\n"
            );
-  } else if ((argc >= 1 && argc <= 3) && argv[func] == NULL) {
-    printf("no function input\n");
-    exit(EXIT_FAILURE);
-  } else if ((argc >= 1 && argc <= 3) && argv[func] != NULL && argv[imgp] != NULL) {
-    if (strcmp("gray", argv[func]) == 0) {
-      printf("\nconverting image to grayscale\n"); 
-      image_gray(argv[imgp]);
-      printf("done...\n");
-    } else if (strcmp("blur", argv[func]) == 0) { 
-      printf("\napplying gaussian filter to image\n"); 
-      printf("done...\n");
-    } else if (strcmp("info", argv[func]) == 0) { 
-      printf("\ndisplaying image info\n"); 
-      image_info(argv[imgp]);
-    } else {
-      printf("\nunknown function or not implement yet\n");
     }
-    exit(EXIT_SUCCESS);
-  } else if ((argc >= 1 && argc <= 3) && argv[func] != NULL && argv[imgp] == NULL) {
-    printf("\nUnknown function!\n");
-  } else {
-    printf("\nUnknown command!\n");
-  }
   return 0;
 }
 
@@ -54,10 +47,10 @@ void image_info (const char* image_file) {
       );
 }
 
-void image_blur (const char* image_file) {
+void image_blur (image *image_data, const char* image_file) {
   const char *fname = "image_blur.jpg";
   int x, y, comps, blur_chan;
-  unsigned char *img = stbi_load(image_file, &x, &y, &comps, 4);
+  unsigned char *img = stbi_load(image_file, image_data->x, image_data->y, image_data->comps, 4);
   size_t image_size = x * y * comps;
   blur_chan = (comps == 4) ? 2:1;
   size_t blur_image_size = x * y * blur_chan;
@@ -70,7 +63,6 @@ void image_blur (const char* image_file) {
   stbi_image_free(img);
   stbi_image_free(blur_img);
 }
-
 
 /* support PNG only */
 void image_gray (const char* image_file) {

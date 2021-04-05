@@ -15,9 +15,11 @@
 #include "lib/stb_image_write.h"
 
 typedef struct {
-  int x, y, comps;
-}img;
+  int x;
+  int y;
+  int comps;
+}image;
 
 void image_info(const char*);
 void image_gray(const char*);
-void image_blur(const char*);
+void image_blur(image *img, const char*);
