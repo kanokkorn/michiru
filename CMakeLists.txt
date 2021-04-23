@@ -8,3 +8,4 @@ elseif (CMAKE_C_COMPILER_ID STREQUAL "MSVC")
 endif()
 
 add_executable (michiru main.c)
+target_link_libraries(michiru PRIVATE m)
