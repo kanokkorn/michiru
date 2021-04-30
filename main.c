@@ -49,7 +49,7 @@ void image_info (const char* image_file, img_data *img_data) {
 void image_blur (const char* image_file, img_data *img_data) {
   const char *fname = "image_blur.jpg";
   int blur_chan;
-  unsigned char *img = stbi_load(image_file, img_data->width, img_data->height, img_data->channel, 4);
+  unsigned char *img = stbi_load(image_file, &img_data->width, &img_data->height, &img_data->channel, 4);
   size_t image_size = img_data->width * img_data->height * img_data->channel;
   blur_chan = (img_data->channel == 4) ? 2 : 1;
   size_t blur_image_size = img_data->width * img_data->height * blur_chan;
