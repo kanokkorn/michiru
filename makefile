@@ -1,11 +1,12 @@
-CC = cc
-CFLAGS = -std=c99 -Wall -Wextra -Wconversion -Os -s -pedantic
-LIBS = -lm
-PROJECT = michiru
+cc = cc
+cflags = -std=c99 -Wall -Wextra -Wconversion\
+         -Wshadow -O3 -s -pedantic
+libs = -lm
+project = example
 
-$(PROJECT): main.c
-	$(CC) $(CFLAGS) $< -o $@ $(LIBS)
+$(project): example.c
+	$(cc) $(cflags) $< -o $@ $(libs)
 clean:
-	rm $(PROJECT)
+	$(RM) $(project)
 
 .SILENT: clean
