@@ -7,5 +7,5 @@ elseif (CMAKE_C_COMPILER_ID STREQUAL "MSVC")
   set (CMAKE_C_FLAGS "/std:c11 /O2")
 endif()
 
-add_executable (michiru main.c)
-target_link_libraries(michiru PRIVATE m)
+add_executable (example example.c)
+target_link_libraries(example PRIVATE m)
